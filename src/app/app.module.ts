@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LogoutComponent } from './pages/logout/logout.component';
+import { KategoriComponent } from './pages/kategori/kategori.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { LogoutComponent } from './pages/logout/logout.component';
     AdminLayoutComponent,
     LoginComponent,
     LogoutComponent,
+    KategoriComponent,
   ],
   imports: [
     BrowserAnimationsModule,

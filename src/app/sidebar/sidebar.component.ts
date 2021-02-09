@@ -18,20 +18,22 @@ export const ROUTESADMIN: RouteInfo[] =
         // { path: '/user',          title: 'User Profile',      icon:'nc-single-02',  class: '' },
         // { path: '/table',         title: 'Table List',        icon:'nc-tile-56',    class: '' },
         // { path: '/typography',    title: 'Typography',        icon:'nc-caps-small', class: '' },
-        { path: '/pembelian',     title: 'Pembelian',         icon:'nc-bag-16',     class: ''},
+        { path: '/kategori',      title: 'Master Kategori',           icon:'nc-single-copy-04',     class: ''},
         { path: '/logout',        title: 'Logout',            icon:'nc-spaceship',     class: 'active-pro'},
+
     ];
 export const ROUTESUSER: RouteInfo[] = 
     [
         { path: '/dashboard',     title: 'Dashboard',         icon:'nc-bank',       class: '' },
-        { path: '/icons',         title: 'Icons',             icon:'nc-diamond',    class: '' },
-        { path: '/maps',          title: 'Maps',              icon:'nc-pin-3',      class: '' },
-        { path: '/notifications', title: 'Notifications',     icon:'nc-bell-55',    class: '' },
-        { path: '/user',          title: 'User Profile',      icon:'nc-single-02',  class: '' },
-        { path: '/table',         title: 'Table List',        icon:'nc-tile-56',    class: '' },
-        { path: '/typography',    title: 'Typography',        icon:'nc-caps-small', class: '' },
+        // { path: '/icons',         title: 'Icons',             icon:'nc-diamond',    class: '' },
+        // { path: '/maps',          title: 'Maps',              icon:'nc-pin-3',      class: '' },
+        // { path: '/notifications', title: 'Notifications',     icon:'nc-bell-55',    class: '' },
+        // { path: '/user',          title: 'User Profile',      icon:'nc-single-02',  class: '' },
+        // { path: '/table',         title: 'Table List',        icon:'nc-tile-56',    class: '' },
+        // { path: '/typography',    title: 'Typography',        icon:'nc-caps-small', class: '' },
         { path: '/pembelian',     title: 'Pembelian',         icon:'nc-bag-16',     class: ''},
         { path: '/logout',        title: 'Logout',            icon:'nc-spaceship',     class: 'active-pro'},
+
     ];
 
 @Component({
