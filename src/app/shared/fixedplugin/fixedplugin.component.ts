@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class FixedPluginComponent implements OnInit{
 
-  public sidebarColor: string = "white";
+  public sidebarColor: string = "dark";
   public sidebarActiveColor: string = "danger";
 
   public state: boolean = true;

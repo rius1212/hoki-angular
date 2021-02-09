@@ -8,5 +8,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class UpgradeComponent implements OnInit{
     ngOnInit(){
+        localStorage.removeItem('data');
+        location.replace("http://localhost:4200/#/login")
     }
 }

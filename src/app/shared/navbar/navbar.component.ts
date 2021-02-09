@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
-import { ROUTES } from '../../sidebar/sidebar.component';
+import { ROUTESADMIN } from '../../sidebar/sidebar.component';
+import { ROUTESUSER } from '../../sidebar/sidebar.component';
 import { Router } from '@angular/router';
 import { Location} from '@angular/common';
 
@@ -26,7 +27,11 @@ export class NavbarComponent implements OnInit{
     }
 
     ngOnInit(){
-        this.listTitles = ROUTES.filter(listTitle => listTitle);
+        if(localStorage.getItem('data')=='Admin'){
+            this.listTitles = ROUTESADMIN.filter(listTitle => listTitle);
+        }else{
+            this.listTitles = ROUTESUSER.filter(listTitle => listTitle);
+        }
         var navbar : HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
       //   this.router.events.subscribe((event) => {
