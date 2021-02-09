@@ -18,6 +18,9 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './pages/login/login.component';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { KategoriComponent } from './pages/kategori/kategori.component';
+import { BarangComponent } from './pages/barang/barang.component';
+import { SupplierComponent } from './pages/supplier/supplier.component';
+import { PembelianComponent } from './pages/pembelian/pembelian.component';
 
 
 @NgModule({
@@ -27,6 +30,9 @@ import { KategoriComponent } from './pages/kategori/kategori.component';
     LoginComponent,
     LogoutComponent,
     KategoriComponent,
+    BarangComponent,
+    SupplierComponent,
+    PembelianComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -39,7 +45,8 @@ import { KategoriComponent } from './pages/kategori/kategori.component';
     FooterModule,
     FixedPluginModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { title } from 'process';
 
 
 export interface RouteInfo {
@@ -18,7 +17,9 @@ export const ROUTESADMIN: RouteInfo[] =
         // { path: '/user',          title: 'User Profile',      icon:'nc-single-02',  class: '' },
         // { path: '/table',         title: 'Table List',        icon:'nc-tile-56',    class: '' },
         // { path: '/typography',    title: 'Typography',        icon:'nc-caps-small', class: '' },
-        { path: '/kategori',      title: 'Master Kategori',           icon:'nc-single-copy-04',     class: ''},
+        { path: '/kategori',      title: 'Master Kategori',   icon:'nc-single-copy-04',     class: ''},
+        { path: '/barang',        title: 'Master Barang',     icon:'nc-box-2',     class: ''},
+        { path: '/supplier',        title: 'Master Supplier',     icon:'nc-badge',     class: ''},
         { path: '/logout',        title: 'Logout',            icon:'nc-spaceship',     class: 'active-pro'},
 
     ];

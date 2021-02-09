@@ -1,4 +1,4 @@
-  <div class="card">
+<div class="card">
     <div class="card-body">
       <button type="button" class="btn btn-success btn-round"  data-toggle="modal" data-target="#exampleModal" (click)="open()">
         <i class="fa fa-plus-square"></i> Tambah Data
@@ -7,16 +7,18 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col">No</th>
+            <th scope="col">Kode Barang</th>
+            <th scope="col">Nama Barang</th>
             <th scope="col">Kode Kategori</th>
-            <th scope="col">Nama Kategori</th>
             <th scope="col">Aksi</th>
           </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let data of kategori; let i = index">
+            <tr *ngFor="let data of barang; let i = index">
                 <th scope="row">{{i + 1}}</th>
+                <td>{{data.kodeBarang}}</td>
+                <td>{{data.namaBarang}}</td>
                 <td>{{data.kodeKategori}}</td>
-                <td>{{data.namaKategori}}</td>
                 <td>
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="setForm(data)">
                     <i class="fa fa-pencil-square-o"></i> Edit
@@ -36,19 +38,26 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">{{title}} Data Kategori</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{title}} Data Barang</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="resetForm()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
             <div class="form-group">
-              <label for="name">Nama Kategori</label>
-              <input type="text" class="form-control" id="namaKategori" aria-describedby="namaKategori" [(ngModel)]="kategoris.namaKategori">
+                <label for="code">Kode Barang</label>
+                <input type="text" class="form-control" id="kodeBarang" placeholder="Kode Barang" [(ngModel)]="barangs.kodeBarang">
+              </div>
+            <div class="form-group">
+              <label for="name">Nama Barang</label>
+              <input type="text" class="form-control" id="namaBarang" placeholder="Nama Barang" aria-describedby="namaBarang" [(ngModel)]="barangs.namaBarang">
             </div>
             <div class="form-group">
-              <label for="code">Kode Kategori</label>
-              <input type="text" class="form-control" id="kodeKategori" [(ngModel)]="kategoris.kodeKategori">
+                <label for="name">Kategori</label>
+                <select class="form-control" [(ngModel)]="barangs.kodeKategori">
+                    <option value="" selected>--Kategori--</option>
+                    <option *ngFor="let data of kategori; let i = index" [value]="data.kodeKategori">{{ data.namaKategori}}</option>
+                  </select>
             </div>
         </div>
         <div class="modal-footer">

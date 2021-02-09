@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { KategoriService } from '../../services/kategori/kategori.service';
+import { SupplierService } from '../../services/supplier/supplier.service';
 
 @Component({
-  selector: 'app-kategori',
-  templateUrl: './kategori.component.html',
-  styleUrls: ['./kategori.component.css']
+  selector: 'app-supplier',
+  templateUrl: './supplier.component.html',
+  styleUrls: ['./supplier.component.css']
 })
-export class KategoriComponent implements OnInit {
+export class SupplierComponent implements OnInit {
 
-  kategori: any;
-  kategoris = {
-    namaKategori : '',
-    kodeKategori: ''
+  supplier: any;
+  suppliers = {
+    kodeSupplier : '',
+    namaSupplier : '',
+    linkSupplier: ''
   }
   title: String = 'Tambah';
   showModalBox: boolean = false;
   updatedId: String = '';
 
-  constructor(private kategoriService: KategoriService) { }
+
+  constructor(private supplierService: SupplierService) { }
 
   ngOnInit(): void {
     this.getAll();
@@ -32,10 +34,10 @@ export class KategoriComponent implements OnInit {
   }
 
   getAll(): void {
-    this.kategoriService.getAll()
+    this.supplierService.getAll()
       .subscribe(
         data => {
-          this.kategori = data;
+          this.supplier = data;
         },
         error => {
           console.log(error);
@@ -44,11 +46,12 @@ export class KategoriComponent implements OnInit {
 
   save(): void {
     const data = {
-      namaKategori:  this.kategoris.namaKategori,
-      kodeKategori:  this.kategoris.kodeKategori
+      kodeSupplier:  this.suppliers.kodeSupplier,
+      namaSupplier:  this.suppliers.namaSupplier,
+      linkSupplier:  this.suppliers.linkSupplier
     };
 
-    this.kategoriService.create(data)
+    this.supplierService.create(data)
       .subscribe(
         response => {
           this.resetForm();
@@ -62,11 +65,12 @@ export class KategoriComponent implements OnInit {
 
   update(): void {
     const data = {
-      namaKategori:  this.kategoris.namaKategori,
-      kodeKategori:  this.kategoris.kodeKategori
+      kodeSupplier:  this.suppliers.kodeSupplier,
+      namaSupplier:  this.suppliers.namaSupplier,
+      linkSupplier:  this.suppliers.linkSupplier
     };
 
-    this.kategoriService.update(this.updatedId,data)
+    this.supplierService.update(this.updatedId,data)
       .subscribe(
         response => {
           this.resetForm();
@@ -79,7 +83,7 @@ export class KategoriComponent implements OnInit {
   }
 
   delete(id){
-    this.kategoriService.delete(id)
+    this.supplierService.delete(id)
     .subscribe(
       response =>{
         alert("delete berhasil");
@@ -91,8 +95,9 @@ export class KategoriComponent implements OnInit {
   setForm(data){
     console.log(data)
     this.updatedId = data.id;
-    this.kategoris.namaKategori = data.namaKategori;
-    this.kategoris.kodeKategori = data.kodeKategori;
+    this.suppliers.kodeSupplier = data.kodeSupplier;
+    this.suppliers.namaSupplier = data.namaSupplier;
+    this.suppliers.linkSupplier = data.linkSupplier;
     this.title = 'Edit';
     this.open()
   }
@@ -107,11 +112,11 @@ export class KategoriComponent implements OnInit {
 
   resetForm(){
     this.title = 'Tambah';
-    this.kategoris = {
-      namaKategori : '',
-      kodeKategori: ''
+    this.suppliers = {
+      kodeSupplier: '',
+      namaSupplier : '',
+      linkSupplier: ''
     }
   }
-
 
 }
