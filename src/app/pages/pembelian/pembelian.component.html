@@ -1,102 +1,191 @@
 <div class="card">
-    <div class="card-body">
-      <button type="button" class="btn btn-success btn-round"  data-toggle="modal" data-target="#exampleModal" (click)="open()">
-        <i class="fa fa-plus-square"></i> Tambah Data
-      </button>
-      <table class="table table-hover">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">No</th>
-            <th scope="col">Kode</th>
-            <th scope="col">Tanggal</th>
-            <th scope="col">Supplier</th>
-            <th scope="col">Pembayaran</th>
-            <th scope="col">Total</th>
-            <th scope="col">Ongkir</th>
-            <th scope="col">Potongan</th>
-            <th scope="col">Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let data of headerPembelian; let i = index">
-                <th scope="row">{{i + 1}}</th>
-                <td>{{data.kodePembelian}}</td>
-                <td>{{data.tanggalPembelian}}</td>
-                <td>{{data.kodeSupplier}}</td>
-                <td>{{data.metodePembayaran}}</td>
-                <td>{{data.totalPembelian}}</td>
-                <td>{{data.ongkir}}</td>
-                <td>{{data.potongan}}</td>
-                <td>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="setForm(data)">
-                    <i class="fa fa-pencil-square-o"></i> Edit
-                  </button>
-                  <button type="button" class="btn btn-danger ml-3" (click)="delete(data.id)">
-                    <i class="fa fa-trash"></i> Hapus
-                  </button>
-                </td>
-              </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="card-body">
+    <button type="button" class="btn btn-success btn-round" data-toggle="modal" data-target="#exampleModal"
+      (click)="open()">
+      <i class="fa fa-plus-square"></i> Tambah Data
+    </button>
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Kode</th>
+          <th scope="col">Tanggal</th>
+          <th scope="col">Supplier</th>
+          <th scope="col">Pembayaran</th>
+          <th scope="col">Total</th>
+          <th scope="col">Ongkir</th>
+          <th scope="col">Potongan</th>
+          <th scope="col">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of headerPembelian; let i = index">
+          <th scope="row">{{i + 1}}</th>
+          <td>{{data.kodePembelian}}</td>
+          <td>{{data.tanggalPembelian}}</td>
+          <td>{{data.kodeSupplier}}</td>
+          <td>{{data.metodePembayaran}}</td>
+          <td>{{data.totalPembelian}}</td>
+          <td>{{data.ongkir}}</td>
+          <td>{{data.potongan}}</td>
+          <td>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+              (click)="setForm(data)">
+              <i class="fa fa-pencil-square-o"></i> Edit
+            </button>
+            <button type="button" class="btn btn-danger ml-3" (click)="delete(data.id)">
+              <i class="fa fa-trash"></i> Hapus
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
-  <!-- Tambah Data Modal -->
-  <div *ngIf="showModalBox" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">{{title}} Data Supplier</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="resetForm()">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
+<!-- Tambah Data Modal -->
+<div *ngIf="showModalBox" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{title}} Data Pembelian</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="resetForm()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Header Pembelian</p>
+        <div class="row">
+          <div class="col">
             <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="kode">Kode Pembelian</label>
-                        <input type="text" class="form-control" id="kodePembelian" aria-describedby="kodePembelian" [(ngModel)]="headerPembelians.kodePembelian" readonly>
-                      </div>
+              <div class="col-8">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="kodePembelian" aria-describedby="kodePembelian"
+                    [(ngModel)]="headerPembelians.kodePembelian" placeholder="Kode Pembelian">
                 </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="kode">Tanggal Pembelian</label>
-                        <input type="text" class="form-control" id="tanggalPembelian" aria-describedby="tanggalPembelian" [(ngModel)]="headerPembelians.tanggalPembelian">
-                        
-                    </div>
-                    
-                    <!-- <div class="form-group">
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="kodePembelianGenerated" aria-describedby="kodePembelianGenerated"
+                    [(ngModel)]="headerPembelians.kodePembelianGenerated" placeholder="Generated Value" readonly>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <input type="text" class="form-control" id="tanggalPembelian" aria-describedby="tanggalPembelian"
+                [(ngModel)]="headerPembelians.tanggalPembelian" placeholder="Tanggal Pembelian">
+
+            </div>
+
+            <!-- <div class="form-group">
                         <label for="name">Tanggal Pembelian</label>
                         <input type="text" class="form-control" id="tanggalPembelian" aria-describedby="tanggalPembelian" [(ngModel)]="headerPembelians.tanggalPembelian">
                       </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <select class="form-control" [(ngModel)]="headerPembelians.kodeSupplier">
+                <option value="" selected>--Supplier--</option>
+                <option *ngFor="let data of supplier; let i = index" [value]="data.kodeSupplier">{{ data.namaSupplier}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <select class="form-control" [(ngModel)]="headerPembelians.metodePembayaran">
+                <option value="" selected>--Metode Pembayaran--</option>
+                <option *ngFor="let data of dropdownMetode; let i = index" [value]="data">{{ data}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <p>Detail Pembelian</p>
+        <div class="row">
+          <div class="col-8">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="kodePembelian" aria-describedby="kodePembelian"
+                    [(ngModel)]="detailPembelians.kodePembelian" placeholder="Kode Pembelian" readonly>
                 </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <select class="form-control" [(ngModel)]="detailPembelians.kodeBarang">
+                    <option value="" selected>--Daftar Barang--</option>
+                    <option *ngFor="let data of barang; let i = index" [value]="data.kodeBarang">{{ data.namaBarang}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="namaBarang" aria-describedby="namaBarang"
+                    [(ngModel)]="detailPembelians.namaBarang" placeholder="Nama Barang">
+                </div>
+              </div>
             </div>
             <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="kode">Supplier</label>
-                        <select class="form-control" [(ngModel)]="headerPembelians.kodeSupplier">
-                            <option value="" selected>--Daftar Supplier--</option>
-                            <option *ngFor="let data of supplier; let i = index" [value]="data.kodeSupplier">{{ data.namaSupplier}}</option>
-                          </select>
-                    </div>
+              <div class="col">
+                <div class="form-group">
+                  <input type="number" class="form-control" id="hargaBeli" aria-describedby="hargaBeli"
+                    [(ngModel)]="detailPembelians.hargaBeli" placeholder="Harga Beli">
                 </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="name">Metode Pembayaran</label>
-                        <select class="form-control" [(ngModel)]="headerPembelians.metodePembayaran">
-                            <option value="" selected>--Daftar Supplier--</option>
-                            <option *ngFor="let data of metodePembayaran; let i = index" [value]="data[i]">{{ data[i]}}</option>
-                          </select>
-                      </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <input type="number" class="form-control" id="quantity" aria-describedby="quantity"
+                    [(ngModel)]="detailPembelians.quantity" placeholder="Quantity">
                 </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="totalHarga" aria-describedby="totalHarga"
+                    [(ngModel)]="detailPembelians.totalHarga" placeholder="Sub Total" readonly>
+                </div>
+              </div>
             </div>
+           
+          </div>
+          <div class="col-4" style="border-left:1px solid #000">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="totalPembelian" aria-describedby="totalPembelian"
+                    [(ngModel)]="headerPembelians.totalPembelian" placeholder="Total Pembelian">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="ongkir" aria-describedby="ongkir"
+                    [(ngModel)]="headerPembelians.ongkir" placeholder="Ongkir">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="potongan" aria-describedby="potongan"
+                    [(ngModel)]="headerPembelians.potongan" placeholder="Potongan">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="resetForm()">Close</button>
-          <button type="button" class="btn btn-primary" (click)="prepare()" data-dismiss="modal">Save</button>
-        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="resetForm()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="prepare()" data-dismiss="modal">Save</button>
       </div>
     </div>
   </div>
+</div>
